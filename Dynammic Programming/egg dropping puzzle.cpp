@@ -1,3 +1,5 @@
+//https://practice.geeksforgeeks.org/problems/egg-dropping-puzzle-1587115620/1
+
 #include <bits/stdc++.h>
 #include<math.h>
 #include<iostream>
