@@ -25,10 +25,9 @@ bool myCmp(schedule x,schedule y) {
                 if(profitx[i].start>=profitx[j].end) {
                     dp[i]=max( dp[j] + profitx[i].profit , dp[i] );
                 }
-                dp[i]=max(dp[i],dp[j]);
             }
         }
-        return dp[x-1];
+        return *max_element(dp,dp+x)
         
     }
 int main(){
