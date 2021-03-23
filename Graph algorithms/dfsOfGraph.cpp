@@ -10,10 +10,15 @@ template<typename T>
 class Graph{
 private:
   int v;
+  vector<T> vertices;
   map<T,list<T>> graph;
 public:
-  Graph(int v) {
+  Graph(int v,vector<T> vertex) {
       this->v=v;
+      for(int i=0;i<vertex.size();i++) {
+          vertices.push_back(vertex[i]);
+      }
+      
   }
 
   void addEdge(T u,T v) {
@@ -38,13 +43,18 @@ public:
       dfsVector.push_back(root);
       return dfsVector;
   }
-  vector<T> dfs(T root) {
+  vector<vector<T>> dfs(T root) {
       unordered_map<T,bool> visited;
       for(auto it : graph) {
           visited[it.first] = false;
       }
-      vector<T> dfsVector;
-      dfsVector = dfsUtil(root,visited);
+      vector<vector<T>> dfsVector;
+      vector<T> v;
+      for(int i=0;i<vertices.size();i++) {
+          if(!visited[vertices[i]]){
+          dfsVector.push_back(dfsUtil(vertices[i],visited));
+        }
+      }
       return dfsVector;
   }
 void printGraph() {
@@ -61,21 +71,26 @@ void printGraph() {
 void solve() {
     int v,e;
     cin>>v>>e;
-    Graph<int> graph(v);
+    
     int x,y;
+    vector<int> vertex(v);
+    for(int i=0;i<v;i++) {
+       cin>>vertex[i];
+    }
+    Graph<int> graph(v,vertex);
     for(int i=0;i<e;i++) {
         cin>>x>>y;
         graph.addEdge(x,y);
     }
 
-    vector<int> bfsVector;
+    vector<vector<int>> bfsVector;
     bfsVector = graph.dfs(0);
-    for(int i=0;i<bfsVector.size();i++) {
-        cout<<bfsVector[i]<<", ";
-    }
-    cout<<"\n";
-   // graph.printGraph();
-
+   for(auto it: bfsVector) {
+       for(auto child: it) {
+           cout<<child<<" ";
+       }
+       cout<<endl;
+   }
 }
 int main() {
 // #ifndef ONLINE_JUDGE
