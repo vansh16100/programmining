@@ -120,10 +120,10 @@ void solve() {
 
 
 int main() {
-#ifndef ONLINE_JUDGE
-    freopen("E:/competitive/input.txt", "r", stdin);
-    freopen("E:/competitive/output.txt", "w", stdout);
-#endif
+// #ifndef ONLINE_JUDGE
+//     freopen("E:/competitive/input.txt", "r", stdin);
+//     freopen("E:/competitive/output.txt", "w", stdout);
+// #endif
 solve();
 return 0;
  }
