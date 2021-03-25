@@ -54,7 +54,7 @@ public:
        }
    }
    
-   T extractMin() {
+   Node extractMin() {
       Node min = heap[0];
       swap(heap[0],heap[heap.size()-1]);
       changePos(heap[0],heap[heap.size()-1],0,heap.size()-1);
@@ -111,7 +111,7 @@ void solve() {
    h.add(2,2);
    h.add(1,3);
    h.add(0,4);
-  int key = h.extractMin();
+  auto key = h.extractMin();
   h.decreaseKey(0,0);
    //cout<<key<<endl;
   // cout<<h.checkKey(4)<<endl;
@@ -120,10 +120,10 @@ void solve() {
 
 
 int main() {
-// #ifndef ONLINE_JUDGE
-//     freopen("E:/competitive/input.txt", "r", stdin);
-//     freopen("E:/competitive/output.txt", "w", stdout);
-// #endif
+#ifndef true
+    freopen("E:/competitive/input.txt", "r", stdin);
+    freopen("E:/competitive/output.txt", "w", stdout);
+#endif
 solve();
 return 0;
  }
