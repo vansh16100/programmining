@@ -131,7 +131,7 @@ int kruskal(unordered_map<int, list<GraphNode<int>>> &g) {
         GraphNode<int> nx(x, weight);
         GraphNode<int> ny(y, weight);
         g[x].push_back(ny);
-        g[y].push_back(nx);
+       // g[y].push_back(nx);
     }
   //  cout << prims(g, 0);
     // g.printGraph();
