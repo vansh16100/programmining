@@ -66,10 +66,10 @@ void solve() {
   minFlow(cost);
 }
 int main() {
-#ifndef ONLINE_JUDGE
-freopen("input.txt", "r", stdin);
-freopen("output.txt", "w", stdout);
-#endif
+// #ifndef ONLINE_JUDGE
+// freopen("input.txt", "r", stdin);
+// freopen("output.txt", "w", stdout);
+// #endif
 solve();
 return 0;
  }
