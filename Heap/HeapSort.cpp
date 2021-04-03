@@ -44,10 +44,10 @@ void solve() {
      cout<<"\n";
 }
 int main() {
-// #ifndef ONLINE_JUDGE
-//     freopen("E:/competitive/input.txt", "r", stdin);
-//     freopen("E:/competitive/output.txt", "w", stdout);
-// #endif
+#ifndef ONLINE_JUDGE
+    freopen("E:/competitive/input.txt", "r", stdin);
+    freopen("E:/competitive/output.txt", "w", stdout);
+#endif
 // int t;
 // cin>>t;
 // while(t--){
