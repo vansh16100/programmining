@@ -1,31 +1,19 @@
-// O(n)
-// using inorder and stack
-
-void inorder(Node *root, vector<int> &v)
+void inorderLeaf(Node *root, vector<int> &v)
 {
 
     if (root == NULL)
         return;
 
-    inorder(root->left, v);
+    inorderLeaf(root->left, v);
     if (root->left == NULL && root->right == NULL)
     {
         v.push_back(root->data);
     }
-    inorder(root->right, v);
+    inorderLeaf(root->right, v);
 }
-
-vector<int> printBoundary(Node *root)
+void leftBoundary(Node *root, vector<int> &v)
 {
-    //Your code here
-    Node *curr = root;
-    vector<int> v;
-    if (root == NULL)
-        return {};
-    v.push_back(root->data);
-
-    curr = root->root->left;
-
+    Node *curr = root->left;
     while (curr && (curr->left || curr->right))
     {
         v.push_back(curr->data);
@@ -35,8 +23,11 @@ vector<int> printBoundary(Node *root)
         else
             curr = curr->right;
     }
+}
+stack<int> rightBoundary(Node *root)
+{
     stack<int> s;
-    curr = root->right;
+    Node *curr = root->right;
     while (curr && (curr->left || curr->right))
     {
         s.push(curr->data);
@@ -46,7 +37,20 @@ vector<int> printBoundary(Node *root)
         else
             curr = curr->left;
     }
-    inorder(root, v);
+    return s;
+}
+vector<int> printBoundary(Node *root)
+{
+    //Your code here
+    vector<int> v;
+    if (root == NULL)
+        return {};
+    v.push_back(root->data);
+
+    leftBoundary(root, v);
+    stack<int> s = rightBoundary(root);
+
+    inorderLeaf(root, v);
     while (!s.empty())
     {
         v.push_back(s.top());
